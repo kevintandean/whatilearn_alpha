@@ -34,28 +34,28 @@
         }
     </style>
 
-    {#jAVASRIPT FOR POPOVER#}
-{#    <script type='text/javascript'>//<![CDATA[#}
-{#    $(function () {#}
-{#        $('[rel=popover]').popover({#}
-{#            html: true,#}
-{#            placement: 'bottom',#}
-{#            content: function () {#}
-{#                return $($(this).data('contentwrapper')).html();#}
-{#            },#}
-{#            trigger: 'hover',#}
-{#            container: 'body',#}
-{#        });#}
-{#    });//]]>#}
-{#    </script>#}
+    jAVASRIPT FOR POPOVER
+    <script type='text/javascript'>//<![CDATA[
+    $(function () {
+        $('[rel=popover]').popover({
+            html: true,
+            placement: 'bottom',
+            content: function () {
+                return $($(this).data('contentwrapper')).html();
+            },
+            trigger: 'hover',
+            container: 'body',
+        });
+    });//]]>
+    </script>
 
-<script type="text/javascript">
-    $(".mycontent").hide();
-    $("#member1").on('hover', function() {
-        $(".mycontent").show();
-    });
-
-</script>
+{#<script type="text/javascript">#}
+{#    $(".mycontent").hide();#}
+{#    $("#member1").on('hover', function() {#}
+{#        $(".mycontent").show();#}
+{#    });#}
+{##}
+{#</script>#}
 
 </head>
 <body>
