@@ -1,0 +1,28 @@
+{% extends "registration/base_template.html" %}
+
+{% block register %}
+    <form method="post" action=".">
+        {% csrf_token %}
+        <div class="form-group">
+{#        {{ form.as_p }}#}
+            <div class="alert alert-danger" style="padding: 5px; margin-top:30px">{{ form.non_field_errors }}</div>
+            {% for field in form %}
+                <!--                <div>{{ field.label_tag }}</div>-->
+{#                <div>{{ field.errors }}</div>#}
+                <div style="padding:5px">{{ field }}</div>
+            {% endfor %}
+            <!--            <input type="submit" value="Submit">         -->
+            <div style="padding:5px">
+                <button class="btn btn-info btn-block" type="submit">sign in</button>
+            </div>
+        </div>
+    </form>
+    <div class="panel">
+        <div class="panel-heading">
+            <a href="{% url 'password_reset' %}"><strong>Forget Password?</strong></a>
+
+        </div>
+        <div class="panel-footer"><i>Not a member?</i> <a href="{% url 'registration_register' %}">Sign Up!</a>
+        </div>
+    </div>
+{% endblock %}

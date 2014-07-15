@@ -1,0 +1,1 @@
+<a href="{{ site }}{{ activation_key }}"> click here </a>

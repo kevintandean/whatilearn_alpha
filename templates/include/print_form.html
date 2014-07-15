@@ -1,0 +1,16 @@
+
+<form method="post" action="." enctype="multipart/form-data" class="form-horizontal">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+{#        {% for field in form %}#}
+{#       {{ field.label_tag }}#}
+{#            {{ field.errors }}#}
+{#            <div style="padding:5px">{{ field }}</div>#}
+{#        {% endfor %}#}
+{#        <!--            <input type="submit" value="Submit">         -->#}
+{#        <div style="padding:5px">#}
+            <button class="btn btn-primary btn-block" type="submit">update</button>
+        </div>
+    </div>
+</form>

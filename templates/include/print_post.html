@@ -1,0 +1,52 @@
+{#{% with last_post.user.username as username %}#}
+{#    {% include 'include/view_user.html' %}#}
+{#{% endwith %}#}
+{#    {{ last_post.user.profile.first_name }} {{ last_post.user.profile.last_name }}#}
+{#this is content{{ last_post.content }}#}
+{#this is source{{ last_post.source }}#}
+{#description {{ last_post.description }}#}
+{#tag {{ last_post.tag.objects.all }}#}
+
+{% for post in posts %}
+    {#    <div class="row">#}
+    {#        <div class="col-md-4">#}
+    {#            <img width=60px src="{{ post.user.profile.avatar_image_url }}">#}
+    {#        </div>#}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="media" style="padding:5px; border-radius:5px; background-color:{% cycle '#4e5d6c' "#617487" %}">
+
+                        <a href="{{ post.user.profile.avatar_image_url }}" class="{% cycle 'pull-left' 'pull-right' %}">
+                            <img src="{{ post.user.profile.avatar_image_url }}" class="img-circle" width="100"
+                                 height="100" style="border:solid">
+                        </a>
+
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                {% with post.user.username as username %}
+                                    <strong>{% include 'include/view_user.html' %}</strong>
+                                {% endwith %}
+                                <small><i>Posted on  <a href="{% url "view_post" post.id %}" style="color:rgba(150, 144, 139, 0.88)">{{ post.created }}</a></i></small>
+{#                            <a href="{% url "view_post" post.id %}">#{{ post.id }}</a>#}
+                            </h4>
+
+                            <p>{{ post.content }}</p>
+
+                            <p><a href="{{ post.source }}">source</a></p>
+{##}
+{#                            <div><strong>Description:</strong>{{ post.description }}</div>#}
+{#                                <div>Tag: {{ post.tag.objects.all }}</div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    {#    {% with post.user.username as username %}#}
+    {#        {% include 'include/view_user.html' %}#}
+    {#    {% endwith %}#}
+    {#    {{ post.user.profile.first_name }} {{ post.user.profile.last_name }}#}
+    {#    this is content{{ post.content }}#}
+    {#    this is source{{ post.source }}#}
+    {#    description {{ post.description }}#}
+    {#    tag {{ post.tag.objects.all }}#}
+{% endfor %}

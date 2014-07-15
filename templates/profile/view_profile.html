@@ -1,0 +1,54 @@
+{% extends "base_template.html" %}
+{% load i18n %}
+{% block head %}
+    <style>
+.bgImageContainer{
+    background-image:url('http://www.whitegadget.com/attachments/pc-wallpapers/16950d1224057972-landscape-wallpaper-blue-river-scenery-wallpapers.jpg');
+    width:500px;
+    height:400px;
+    -webkit-filter: blur(5px);
+    z-index:0;
+    position:absolute;
+}
+.content{
+    z-index:10;
+    position:relative;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="padding-top: 80px">
+        <div class="jumbotron" style="background-image:url({{ cover }}); border-radius:10px;">
+             <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <div class="panel panel-success">
+  <div class="panel-heading">
+    <div class="panel-title">  <img width=600px src="{{ avatar }}" class="img-responsive"
+                                         style="border:solid; align-self:center"></div>
+  </div>
+  <div class="panel-body">
+    <p>My name is <strong>{{ first_name.capitalize }} {{ last_name.capitalize }}</strong>, I learn at least one new thing <strong>everyday!</strong></p>
+  <i>Bio:</i>
+      <p>{{ bio }}</p>
+
+
+  </div>
+</div>
+
+                                        </div>
+                  {% include 'include/print_post.html' %}
+                                </div></div></div>
+{#                <div class="container" style="padding-top:60px">#}
+{#                <div class="jumbotron">#}
+{#                    <div class="col-md-8">#}
+{#                {% include "include/view_user.html" %}#}
+{#                <strong>{{ user_name }}</strong>#}
+{#                <img width= 60px src="{{ avatar }}">#}
+{#                {{ first_name }}#}
+{#                {{ last_name }}#}
+{#                <h6>{{ bio }}</h6>#}
+{#                </div>#}
+{#                </div>#}
+{#                </div>#}
+{% endblock %}

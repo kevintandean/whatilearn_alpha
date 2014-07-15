@@ -1,0 +1,108 @@
+{% extends "base_template.html" %}
+{% load staticfiles %}
+{% block head %}
+
+{% endblock %}
+{#{% block post %}#}
+{#    <li><a href="javascript: void(0)" id="member1" data-contentwrapper=".mycontent" rel="popover">Post</a></li>#}
+{#{% endblock %}#}
+
+{% block content %}
+    {% load staticfiles %}
+
+
+    {#<div class="mycontent">#}
+    {#    Co-President <br/>#}
+    {#    sample@uic.edu#}
+    {#    <h2>test</h2>#}
+    {#</div>#}
+
+    {#    POST POPUP#}
+{#    <div class="mycontent" style="border-radius:10px">#}
+{#        <form method="post" action="." class="form-horizontal">#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                {% for field in form %}#}
+{#                    <!--                <div>{{ field.label_tag }}</div>-->#}
+{#                    <div style="padding:5px">{{ field }}</div>#}
+{#                {% endfor %}#}
+{#                <!--            <input type="submit" value="Submit">         -->#}
+{#                <div style="padding:5px">#}
+{#                    <button class="btn btn-success btn-block" type="submit">post</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+
+    {#    FORM#}
+    {#    <div class="container" style="margin-top: 3%">#}
+    {#        <div class="row">#}
+    {#            <div class="col-md-6 col-md-offset-3" style="background: #999">#}
+    {#                <form method="post" action="." class="form-horizontal">#}
+    {#                    {% csrf_token %}#}
+    {#                    <div class="form-group">#}
+    {#                        {% for field in form %}#}
+    {#                            <!--                <div>{{ field.label_tag }}</div>-->#}
+    {#                            <div style="padding:5px">{{ field }}</div>#}
+    {#                        {% endfor %}#}
+    {#                        <!--            <input type="submit" value="Submit">         -->#}
+    {#                        <div style="padding:5px">#}
+    {#                            <button class="btn btn-default btn-block" type="submit">post</button>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#        <div class="col-md-4" style="background: #999"></div>#}
+
+    {#<form method="post">#}
+    {#    {% csrf_token %}#}
+    {#    {{ form.as_p }}#}
+    {#    <input type="submit" value="Post">#}
+    {#</form>#}
+    <div class="container" style="padding-top: 20px">
+        <div class="jumbotron" style="background-color: #DF655A; border-radius:10px">
+            <div class="row">
+                <div class="col-md-3"><img src="{{ user.profile.avatar_image_url }}" class="img-thumbnail" width="200" style="border-radius:8px">
+
+
+                </div>
+ <div class="col-md-6">
+                        <p><strong>HELLO, {{ user.profile.first_name.capitalize }}</strong></p>
+
+                        <h2>What did you learn today? Share it to the world!</h2>
+                    </div>
+                <div class="col-md-3">
+                    <p style="text-align:right">{% now "jS F Y" %}</p>
+
+                    <p style="text-align:right"><strong>{% now "H:i" %}</strong></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {#    NEWS FEED#}
+    <div class="container" style="padding-top: 10px">
+        {% include 'include/print_post.html' %}
+    </div>
+
+    {#    END NEWS FEED#}
+
+{#        <div><a href="javascript: void(0)" id="member1" data-contentwrapper=".mycontent" rel="popover"><img#}
+{#                src="femaleprofilepicture2.jpg" class="img-polaroid"/></a>#}
+
+    {#        <div class="bs-example">#}
+    {#            <ul class="popover-examples list-inline">#}
+    {#                <li><a href="#" class="btn btn-primary" data-toggle="popover" title="Popover title"#}
+    {#                       data-content="Default popover">Popover</a></li>#}
+    {#                <li><a href="#" class="btn btn-success" data-toggle="popover" title="Popover title"#}
+    {#                       data-content="Another popover">Another popover</a></li>#}
+    {#                <li><a href="#" class="btn btn-info" data-toggle="popover" title="Popover title"#}
+    {#                       data-content="A larger popover to demonstrate the max-width of the Bootstrap popover.">Large#}
+    {#                    popover</a></li>#}
+    {#                <li><a href="#" class="btn btn-warning" data-toggle="popover" title="Popover title"#}
+    {#                       data-content="The last tip!">Last popover</a></li>#}
+    {#            </ul>#}
+    {#        </div>#}
+{% endblock content %}
