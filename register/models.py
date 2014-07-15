@@ -43,9 +43,3 @@ class Post(models.Model):
     def __unicode__(self):
         return self.content
 
-
-
-class Tag(models.Model):
-    tag = models.CharField(max_length=30)
-    post = models.ManyToManyField(Post, null=True, blank=True)
-

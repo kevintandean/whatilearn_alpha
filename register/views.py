@@ -71,9 +71,9 @@ def view_profile(request, username):
     first_name = profile.first_name
     last_name = profile.last_name
     posts=list(Post.objects.filter(user=user_id))
-    tags = Tag.objects.filter(post=1)
+    # tags = Tag.objects.filter(post=1)
 
-    print tags
+    # print tags
     bio = profile.bio
     # if not profile.avatar:
     #     avatar = "/media/avatar/default_avatar.jpg"

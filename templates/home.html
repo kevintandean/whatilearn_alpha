@@ -18,21 +18,21 @@
     {#</div>#}
 
     {#    POST POPUP#}
-    <div class="mycontent" style="border-radius:10px">
-        <form method="post" action="." class="form-horizontal">
-            {% csrf_token %}
-            <div class="form-group">
-                {% for field in form %}
-                    <!--                <div>{{ field.label_tag }}</div>-->
-                    <div style="padding:5px">{{ field }}</div>
-                {% endfor %}
-                <!--            <input type="submit" value="Submit">         -->
-                <div style="padding:5px">
-                    <button class="btn btn-success btn-block" type="submit">post</button>
-                </div>
-            </div>
-        </form>
-    </div>
+{#    <div class="mycontent" style="border-radius:10px">#}
+{#        <form method="post" action="." class="form-horizontal">#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                {% for field in form %}#}
+{#                    <!--                <div>{{ field.label_tag }}</div>-->#}
+{#                    <div style="padding:5px">{{ field }}</div>#}
+{#                {% endfor %}#}
+{#                <!--            <input type="submit" value="Submit">         -->#}
+{#                <div style="padding:5px">#}
+{#                    <button class="btn btn-success btn-block" type="submit">post</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
 
     {#    FORM#}
     {#    <div class="container" style="margin-top: 3%">#}
