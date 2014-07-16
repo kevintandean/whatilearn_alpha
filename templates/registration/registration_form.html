@@ -66,7 +66,7 @@
 {% block register %}
             <form method="post" action="." class="form-horizontal">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="form-group has-info">
                     {%  for field in form %}
 <!--                <div>{{ field.label_tag }}</div>-->
                     {{ field.errors }}

@@ -122,7 +122,7 @@ def home(request):
 
     #feed
 
-    data = {'form' : form, 'posts': posts, 'last_post':last_post}
+    data = {'posts': posts, 'last_post':last_post}
     return render(request, "home.html", data)
 
 def landing(request):

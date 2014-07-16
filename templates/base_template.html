@@ -18,6 +18,8 @@
 
     {% block head %}{% endblock %}
     <style type='text/css'>
+        .arrow {top: -11px !important}
+
         .mycontent {
             display: none;
         }
@@ -34,20 +36,20 @@
         }
     </style>
 
-    jAVASRIPT FOR POPOVER
-    <script type='text/javascript'>//<![CDATA[
-    $(function () {
-        $('[rel=popover]').popover({
-            html: true,
-            placement: 'bottom',
-            content: function () {
-                return $($(this).data('contentwrapper')).html();
-            },
-            trigger: 'click',
-            container: 'body',
-        });
-    });//]]>
-    </script>
+{#    jAVASRIPT FOR POPOVER#}
+{#    <script type='text/javascript'>//<![CDATA[#}
+{#    $(function () {#}
+{#        $('[rel=popover]').popover({#}
+{#            html: true,#}
+{#            placement: 'bottom',#}
+{#            content: function () {#}
+{#                return $($(this).data('contentwrapper')).html();#}
+{#            },#}
+{#            trigger: 'click',#}
+{#            container: 'body',#}
+{#        });#}
+{#    });//]]>#}
+{#    </script>#}
 
 {#<script type="text/javascript">#}
 {#    $(".mycontent").hide();#}
@@ -56,6 +58,11 @@
 {#    });#}
 {##}
 {#</script>#}
+<script>
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
+</script>
 
 </head>
 <body>
@@ -108,35 +115,49 @@
         {#    </form>#}
         {#</div>#}
         <div class="mycontent">
-            <form method="post" action="/home/" class="form-horizontal">
+             <form method="post" action="." class="form-horizontal">
                 {% csrf_token %}
-                <div class="form-group">
-
-                    <!--                <div><label for="id_content">Content:</label></div>-->
-                    <div style="padding:5px"><input class="form-control" id="id_content" name="content"
-                                                    placeholder="What did you learn today? Share it to the world.."
-                                                    type="text"></div>
-
-                    <!--                <div><label for="id_source">Source:</label></div>-->
-                    <div style="padding:5px"><input class="form-control" id="id_source" maxlength="300" name="source"
-                                                    placeholder="Source" type="text"></div>
-
-                    <!--                <div><label for="id_description">Description:</label></div>-->
-                    <div style="padding:5px"><textarea class="form-control" cols="40" id="id_description"
-                                                       name="description" placeholder="Description.."
-                                                       rows="10"></textarea></div>
-
-                    <!--                <div><label for="id_tag">Tag:</label></div>-->
-                    <div style="padding:5px"><input class="form-control" id="id_tag" maxlength="30" name="tag"
-                                                    placeholder="Tags" type="text"></div>
-
-                    <!--            <input type="submit" value="Submit">         -->
-                    <div style="padding:5px">
-                        <button class="btn btn-success btn-block" type="submit">post</button>
-                    </div>
+                <div class="form-group has-info">
+                    {%  for field in postform %}
+<!--                <div>{{ field.label_tag }}</div>-->
+                    <div style="margin-left: 5px; margin-right: 5px">{{ field.errors }}</div>
+                    <div style="padding:5px">{{ field }}</div>
+                    {% endfor %}
+<!--            <input type="submit" value="Submit">         -->
+                <div style="padding:5px"><button class="btn btn-primary btn-block" type="submit">post</button>
+                </div>
                 </div>
             </form>
+{#            <form method="post" action="/home/" class="form-horizontal">#}
+{#                {% csrf_token %}#}
+{#                <div class="form-group">#}
+{##}
+{#                    <!--                <div><label for="id_content">Content:</label></div>-->#}
+{#                    <div style="padding:5px"><input class="form-control" id="id_content" name="content"#}
+{#                                                    placeholder="What did you learn today? Share it to the world.."#}
+{#                                                    type="text"></div>#}
+{##}
+{#                    <!--                <div><label for="id_source">Source:</label></div>-->#}
+{#                    <div style="padding:5px"><input class="form-control" id="id_source" maxlength="300" name="source"#}
+{#                                                    placeholder="Source" type="text"></div>#}
+{##}
+{#                    <!--                <div><label for="id_description">Description:</label></div>-->#}
+{#                    <div style="padding:5px"><textarea class="form-control" cols="40" id="id_description"#}
+{#                                                       name="description" placeholder="Description.."#}
+{#                                                       rows="10"></textarea></div>#}
+{##}
+{#                    <!--                <div><label for="id_tag">Tag:</label></div>-->#}
+{#                    <div style="padding:5px"><input class="form-control" id="id_tag" maxlength="30" name="tag"#}
+{#                                                    placeholder="Tags" type="text"></div>#}
+{##}
+{#                    <!--            <input type="submit" value="Submit">         -->#}
+{#                    <div style="padding:5px">#}
+{#                        <button class="btn btn-success btn-block" type="submit">post</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </form>#}
         </div>
+
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -16,7 +16,7 @@ class ProfileForm(ModelForm):
 
 class PostForm(ModelForm):
     tag = forms.CharField(required=False, max_length=30,widget=forms.TextInput(attrs={'placeholder': 'Tags', 'class':"form-control"}))
-    content = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'What did you learn today? Share it to the world..', 'class':"form-control"}))
+    content = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'What did you learn today? Share it to the world..', 'class':"form-control"}))
     source = forms.CharField(required=False, max_length=300,widget=forms.TextInput(attrs={'placeholder': 'Source', 'class':"form-control"}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder': 'Description..', 'class':"form-control"}))
 

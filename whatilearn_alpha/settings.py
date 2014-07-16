@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    #'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -45,7 +45,7 @@ INSTALLED_APPS = (
     'south',
     'registration',
     'vote',
-    # 'debug_toolbar.apps.DebugToolbarConfig',
+    'debug_toolbar',
 
 
 )
@@ -108,6 +108,14 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.tz",
+"django.contrib.messages.context_processors.messages", "register.context_processors.post")
 
 #registration settings
 ACCOUNT_ACTIVATION_DAYS = 10
