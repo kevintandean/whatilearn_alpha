@@ -18,7 +18,9 @@
 
     {% block head %}{% endblock %}
     <style type='text/css'>
-        .arrow {top: -11px !important}
+        .arrow {
+            top: -11px !important
+        }
 
         .mycontent {
             display: none;
@@ -36,36 +38,70 @@
         }
     </style>
 
-{#    jAVASRIPT FOR POPOVER#}
-{#    <script type='text/javascript'>//<![CDATA[#}
-{#    $(function () {#}
-{#        $('[rel=popover]').popover({#}
-{#            html: true,#}
-{#            placement: 'bottom',#}
-{#            content: function () {#}
-{#                return $($(this).data('contentwrapper')).html();#}
-{#            },#}
-{#            trigger: 'click',#}
-{#            container: 'body',#}
-{#        });#}
-{#    });//]]>#}
-{#    </script>#}
+    {#    jAVASRIPT FOR POPOVER#}
+    <script type='text/javascript'>//<![CDATA[
+    $(function () {
+        $('[rel=popover]').popover({
+            html: true,
+            placement: 'bottom',
+            content: function () {
+                return $($(this).data('contentwrapper')).html();
+            },
+            trigger: 'click',
+            {#                container: 'body',#}
+        });
+    });//]]>
 
-{#<script type="text/javascript">#}
-{#    $(".mycontent").hide();#}
-{#    $("#member1").on('hover', function() {#}
-{#        $(".mycontent").show();#}
-{#    });#}
-{##}
-{#</script>#}
-<script>
-$('.popover-dismiss').popover({
-  trigger: 'focus'
-})
-</script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(function () {
+            startTime()
+        }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }
+        ;  // add zero in front of numbers < 10
+        return i;
+    }
+    </script>
+
+    {#<script type="text/javascript">#}
+    {#    $(".mycontent").hide();#}
+    {#    $("#member1").on('hover', function() {#}
+    {#        $(".mycontent").show();#}
+    {#    });#}
+    {##}
+    {#</script>#}
+    {#    <script>#}
+    {#        $('.button').popover({#}
+    {#            trigger: 'click'#}
+    {#        })#}
+    {#        $("#blob").popover({ title: 'Look! A bird!', content: img, html:true });#}
+    {#    </script>#}
+    {#<script type="text/javascript">#}
+    {# $(document).ready(function() {#}
+    {#  $("[rel=post]").popover({#}
+    {#      placement : 'bottom', //placement of the popover. also can use top, bottom, left or right#}
+    {#      title : '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;"> Muah ha ha</div>', //this is the top title bar of the popover. add some basic css#}
+    {#      html: 'true', //needed to show html of course#}
+    {#      content: function () {#}
+    {#                    return $($(this).data('contentwrapper')).html();#}
+    {#                },#}
+    {# });#}
+    {#{);#}
+    {#</script>#}
 
 </head>
-<body>
+<body onload="startime()">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -77,98 +113,66 @@ $('.popover-dismiss').popover({
             </button>
             <a class="navbar-brand" href="{% url "home" %}">WhatILearn.com</a>
         </div>
-        {#<div class="mycontent">#}
-        {#    <div class="row">#}
-        {#        <div class="col-md-6 col-md-offset-3" style="background: #999">#}
-        {#            <form method="post" action="." class="form-horizontal">#}
-        {#                {% csrf_token %}#}
-        {#                <div class="form-group">#}
-        {#                    {%  for field in form %}#}
-        {#<!--                <div>{{ field.label_tag }}</div>-->#}
-        {#                    <div style="padding:5px">{{ field }}</div>#}
-        {#                    {% endfor %}#}
-        {#<!--            <input type="submit" value="Submit">         -->#}
-        {#                <div style="padding:5px"><button class="btn btn-default btn-block" type="submit">post</button>#}
-        {#                </div>#}
-        {#                </div>#}
-        {#            </form>#}
-        {#        </div>#}
-        {#        <div class="col-md-4" style="background: #999"></div>#}
-        {#    </div>#}
-        {##}
-        {#    </div>#}
 
-
-        {#    <div class="mycontent" style="border-radius: 50px">#}
-        {#    <form method="post" action="." class="form-horizontal">#}
-        {#        {% csrf_token %}#}
-        {#        <div class="form-group">#}
-        {#            {% for field in form %}#}
-        {#                <!--                <div>{{ field.label_tag }}</div>-->#}
-        {#                <div style="padding:5px">{{ field }}</div>#}
-        {#            {% endfor %}#}
-        {#            <!--            <input type="submit" value="Submit">         -->#}
-        {#            <div style="padding:5px">#}
-        {#                <button class="btn btn-success btn-block" type="submit">post</button>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#    </form>#}
-        {#</div>#}
         <div class="mycontent">
-             <form method="post" action="." class="form-horizontal">
+            <form method="post" action="." class="form-horizontal">
                 {% csrf_token %}
                 <div class="form-group has-info">
-                    {%  for field in postform %}
-<!--                <div>{{ field.label_tag }}</div>-->
-                    <div style="margin-left: 5px; margin-right: 5px">{{ field.errors }}</div>
-                    <div style="padding:5px">{{ field }}</div>
+                    {% for field in postform %}
+                        <!--                <div>{{ field.label_tag }}</div>-->
+                        <div style="margin-left: 5px; margin-right: 5px">{{ field.errors }}</div>
+                        <div style="padding:5px">{{ field }}</div>
                     {% endfor %}
-<!--            <input type="submit" value="Submit">         -->
-                <div style="padding:5px"><button class="btn btn-primary btn-block" type="submit">post</button>
-                </div>
+                    <!--            <input type="submit" value="Submit">         -->
+                    <div style="padding:5px">
+                        <button class="btn btn-primary btn-block" type="submit">post</button>
+                    </div>
                 </div>
             </form>
-{#            <form method="post" action="/home/" class="form-horizontal">#}
-{#                {% csrf_token %}#}
-{#                <div class="form-group">#}
-{##}
-{#                    <!--                <div><label for="id_content">Content:</label></div>-->#}
-{#                    <div style="padding:5px"><input class="form-control" id="id_content" name="content"#}
-{#                                                    placeholder="What did you learn today? Share it to the world.."#}
-{#                                                    type="text"></div>#}
-{##}
-{#                    <!--                <div><label for="id_source">Source:</label></div>-->#}
-{#                    <div style="padding:5px"><input class="form-control" id="id_source" maxlength="300" name="source"#}
-{#                                                    placeholder="Source" type="text"></div>#}
-{##}
-{#                    <!--                <div><label for="id_description">Description:</label></div>-->#}
-{#                    <div style="padding:5px"><textarea class="form-control" cols="40" id="id_description"#}
-{#                                                       name="description" placeholder="Description.."#}
-{#                                                       rows="10"></textarea></div>#}
-{##}
-{#                    <!--                <div><label for="id_tag">Tag:</label></div>-->#}
-{#                    <div style="padding:5px"><input class="form-control" id="id_tag" maxlength="30" name="tag"#}
-{#                                                    placeholder="Tags" type="text"></div>#}
-{##}
-{#                    <!--            <input type="submit" value="Submit">         -->#}
-{#                    <div style="padding:5px">#}
-{#                        <button class="btn btn-success btn-block" type="submit">post</button>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </form>#}
         </div>
 
+        {#            <form method="post" action="/home/" class="form-horizontal">#}
+        {#                {% csrf_token %}#}
+        {#                <div class="form-group">#}
+        {##}
+        {#                    <!--                <div><label for="id_content">Content:</label></div>-->#}
+        {#                    <div style="padding:5px"><input class="form-control" id="id_content" name="content"#}
+        {#                                                    placeholder="What did you learn today? Share it to the world.."#}
+        {#                                                    type="text"></div>#}
+        {##}
+        {#                    <!--                <div><label for="id_source">Source:</label></div>-->#}
+        {#                    <div style="padding:5px"><input class="form-control" id="id_source" maxlength="300" name="source"#}
+        {#                                                    placeholder="Source" type="text"></div>#}
+        {##}
+        {#                    <!--                <div><label for="id_description">Description:</label></div>-->#}
+        {#                    <div style="padding:5px"><textarea class="form-control" cols="40" id="id_description"#}
+        {#                                                       name="description" placeholder="Description.."#}
+        {#                                                       rows="10"></textarea></div>#}
+        {##}
+        {#                    <!--                <div><label for="id_tag">Tag:</label></div>-->#}
+        {#                    <div style="padding:5px"><input class="form-control" id="id_tag" maxlength="30" name="tag"#}
+        {#                                                    placeholder="Tags" type="text"></div>#}
+        {##}
+        {#                    <!--            <input type="submit" value="Submit">         -->#}
+        {#                    <div style="padding:5px">#}
+        {#                        <button class="btn btn-success btn-block" type="submit">post</button>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </form>#}
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
 
         <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                {#                {% block post %}#}
-                {#                    POST BUTTON#}
-                {#                {% endblock %}#}
+
+                {##}
+                {#                <li><a href="" id="member1" rel="post"#}
+                {#                       class="btn navbar-btn btn-success" data-contentwrapper=".mycontent">Post<span class="caret"></span></a></li>#}
+                {#"javascript: void(0)"#}
                 <li><a href="javascript: void(0)" id="member1" data-contentwrapper=".mycontent" rel="popover"
                        class="btn navbar-btn btn-success">Post<span class="caret"></span></a></li>
+
                 <li><a href="{% url 'home' %}" class="btn navbar-btn btn-default">Home</a>
                 </li>
                 <li>
@@ -219,7 +223,7 @@ $('.popover-dismiss').popover({
 <div>{% block content %}{% endblock content %}</div>
 
 
-<div style="background-color: #222222; position:relative; height:40px; bottom:0; width:100%">
+<div style="background-color: #222222; position:relative; height:40px; bottom:0; width:100%; margin-top:100px">
     <p align="center">WhatIlearn.com 2014 by Kevin Tandean</p>
 </div>
 

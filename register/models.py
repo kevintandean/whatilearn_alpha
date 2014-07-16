@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from vote.managers import VotableManager
+from taggit.managers import TaggableManager
+
 from registration.models import RegistrationProfile
 
 #profile model that links to user
@@ -36,7 +38,7 @@ class Post(models.Model):
     content = models.TextField(max_length=300)
     source = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(blank=True,null=True)
-    # tag = models.ManyToManyField('Tag', null=True, blank=True, related_name='post')
+    tag = TaggableManager()
     votes = VotableManager()
     created = models.DateTimeField(auto_now_add=True)
 

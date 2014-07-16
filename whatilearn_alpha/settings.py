@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'registration',
     'vote',
     'debug_toolbar',
+    'taggit'
 
 
 )
@@ -121,6 +122,11 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 ACCOUNT_ACTIVATION_DAYS = 10
 
 LOGIN_REDIRECT_URL='/home'
+
+#Taggit settings
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
 
 try:
     from local_settings import *

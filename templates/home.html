@@ -2,6 +2,23 @@
 {% load staticfiles %}
 {% block head %}
 
+<script>
+{#function startTime() {#}
+{#    var today=new Date();#}
+{#    var h=today.getHours();#}
+{#    var m=today.getMinutes();#}
+{#    var s=today.getSeconds();#}
+{#    m = checkTime(m);#}
+{#    s = checkTime(s);#}
+{#    document.getElementById('clock').innerHTML = h+":"+m+":"+s;#}
+{#    var t = setTimeout(function(){startTime()},500);#}
+{#}#}
+{##}
+{#function checkTime(i) {#}
+{#    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10#}
+{#    return i;#}
+{#}#}
+</script>
 {% endblock %}
 {#{% block post %}#}
 {#    <li><a href="javascript: void(0)" id="member1" data-contentwrapper=".mycontent" rel="popover">Post</a></li>#}
@@ -72,8 +89,9 @@
                         <h2>What did you learn today? Share it to the world!</h2>
                     </div>
                 <div class="col-md-3">
-                    <p style="text-align:right">{% now "jS F Y" %}</p>
 
+                    <p style="text-align:right">{% now "jS F Y" %}</p>
+{##}
                     <p style="text-align:right"><strong>{% now "H:i" %}</strong></p>
 
                 </div>
