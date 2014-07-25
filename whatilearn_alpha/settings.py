@@ -100,10 +100,8 @@ DEFAULT_FROM_EMAIL = 'kevintandean@gmail.com'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),)
 
-STATIC_URL = '/static/'STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),)
-
 STATIC_URL = '/static/'
+
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 MEDIA_URL = "/media/"
