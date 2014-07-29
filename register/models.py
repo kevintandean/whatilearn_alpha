@@ -29,7 +29,7 @@ class Profile(models.Model):
 
     def cover_image_url(self):
         if bool(self.cover_image)==False:
-            return self.avatar_image_
+            return self.avatar_image_url()
         else:
             return self.cover_image.url
 
