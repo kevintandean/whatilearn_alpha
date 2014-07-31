@@ -90,7 +90,7 @@ USE_TZ = True
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'kevintandean@gmail.com'
-EMAIL_HOST_PASSWORD = 'Veronee3.'
+# EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'kevintandean@gmail.com'
 

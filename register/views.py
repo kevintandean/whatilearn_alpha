@@ -134,12 +134,6 @@ def landing(request):
 
 def view_post(request, post_id):
     post = Post.objects.get(id=post_id)
-    posts=[post]
+    posts = [post]
     data = {'posts': posts}
     return render(request, "include/view_post.html", data)
-
-    # data = {'first_name':first_name,'last_name':last_name, 'bio':bio, 'avatar':avatar, 'username':username}
-    # return render(request, "profile/view_profile.html", data)
-
-
-
